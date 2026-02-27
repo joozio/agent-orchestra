@@ -126,6 +126,41 @@ const SCENARIOS: Scenario[] = [
       { time: 7.5, from: 'fixer', to: 'lead', text: 'Fix deployed, verified' },
     ],
   },
+  {
+    id: 'incident',
+    name: 'Debug a Production Incident',
+    description: '5 agents triage, investigate, and resolve a live production outage',
+    icon: '🚨',
+    lead: { id: 'lead', role: 'Incident Commander', emoji: '🎖️', x: 50, y: 18, color: '#00ffff' },
+    agents: [
+      { id: 'oncall',  role: 'On-Call Engineer', emoji: '📟', x: 15, y: 48, color: '#ff6b9d' },
+      { id: 'backend', role: 'Backend Lead',      emoji: '🖥️', x: 38, y: 68, color: '#ffd93d' },
+      { id: 'dba',     role: 'Database Expert',   emoji: '🗄️', x: 62, y: 68, color: '#a78bfa' },
+      { id: 'devops',  role: 'DevOps Engineer',   emoji: '🏗️', x: 85, y: 48, color: '#6bcb77' },
+      { id: 'comms',   role: 'Comms Lead',        emoji: '📣', x: 50, y: 85, color: '#fb923c' },
+    ],
+    tasks: [
+      { id: 't1', name: 'Triage alert & assess impact',    assignedTo: 'oncall',  dependencies: [] },
+      { id: 't2', name: 'Scan server logs for errors',     assignedTo: 'backend', dependencies: ['t1'] },
+      { id: 't3', name: 'Check query perf & conn pools',   assignedTo: 'dba',     dependencies: ['t1'] },
+      { id: 't4', name: 'Review deployments & infra',      assignedTo: 'devops',  dependencies: ['t1'] },
+      { id: 't5', name: 'Draft incident status update',    assignedTo: 'comms',   dependencies: ['t2', 't3', 't4'] },
+    ],
+    messages: [
+      { time: 0.5,  from: 'lead',    to: 'oncall',  text: 'P0 alert firing — triage now' },
+      { time: 1.8,  from: 'oncall',  to: 'lead',    text: 'Error rate 42%, DB timeouts' },
+      { time: 2.2,  from: 'lead',    to: 'backend', text: 'Pull last 30 min of logs' },
+      { time: 2.4,  from: 'lead',    to: 'dba',     text: 'Check slow queries & pools' },
+      { time: 2.6,  from: 'lead',    to: 'devops',  text: 'Any deploys in last 2 hrs?' },
+      { time: 4.5,  from: 'devops',  to: 'lead',    text: 'Deploy at 14:32 — suspect' },
+      { time: 5.0,  from: 'dba',     to: 'lead',    text: 'Pool exhausted, N+1 query' },
+      { time: 5.5,  from: 'backend', to: 'lead',    text: 'NullPointerException in cart' },
+      { time: 6.0,  from: 'lead',    to: 'comms',   text: 'Draft customer status page' },
+      { time: 6.5,  from: 'lead',    to: 'devops',  text: 'Rollback deploy now' },
+      { time: 7.2,  from: 'devops',  to: 'lead',    text: 'Rollback done, errors down' },
+      { time: 7.8,  from: 'comms',   to: 'lead',    text: 'Status page updated' },
+    ],
+  },
 ];
 
 // ============ HELPERS ============
