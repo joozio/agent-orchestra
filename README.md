@@ -28,6 +28,10 @@ npm run dev
 - **Message passing visualization** — see exactly what agents communicate and when
 - **Real-time progress tracking** per agent and per task
 
+## Related
+
+See also: [wiz-experiments](https://github.com/joozio/wiz-experiments) — 44+ more interactive AI experiments
+
 ## Built With
 
 - React 19
@@ -39,3 +43,11 @@ npm run dev
 ## License
 
 MIT
+
+---
+
+Built by [Pawel Jozefiak](https://thoughts.jock.pl). I write about AI agents, automation, and building in public at **[Digital Thoughts](https://thoughts.jock.pl)** (1,000+ subscribers).
+
+Build your own: [AI Agent Blueprint](https://wiz.jock.pl/store/ai-agent-blueprint) ($39)
+
+[Subscribe to the newsletter](https://thoughts.jock.pl/subscribe) | [More projects](https://github.com/joozio) | [@joozio](https://x.com/joozio)
